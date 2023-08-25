@@ -1,26 +1,39 @@
-public class Burger {
-    public String bun;
-    public String meat;
-    public String cheese;
-    public String salad;
-    public boolean mayonnaise;
+class Burger {
+    private String bun;
+    private String meat;
+    private String cheese;
+    private String veggies;
+    private boolean mayo;
 
-    public Burger(String bun, String meat, String cheese, String salad, boolean mayonnaise){
+    public Burger(String bun, String meat, String cheese, String veggies, boolean mayo) {
         this.bun = bun;
         this.meat = meat;
         this.cheese = cheese;
-        this.salad = salad;
-        this.mayonnaise = mayonnaise;
+        this.veggies = veggies;
+        this.mayo = mayo;
     }
+
+    public Burger(String bun, String meat, String cheese, String veggies) {
+        this(bun, meat, cheese, veggies, true);
+    }
+
+    public Burger(String bun, String meat, String cheese, String veggies, boolean mayo, boolean doubleMeat) {
+        this.bun = bun;
+        this.meat = doubleMeat ? "Double " + meat : meat;
+        this.cheese = cheese;
+        this.veggies = veggies;
+        this.mayo = mayo;
+    }
+
     @Override
     public String toString() {
-        String mayonnaiseStatus = mayonnaise ? "Yes" : "No";
-        return "Інгрідієнти:\n" +
-                "Булочка: " + bun + "\n" +
-                "М'ясо: " + meat + "\n" +
-                "Сир: " + cheese + "\n" +
-                "Салат: " + salad + "\n" +
-                "Майонез: " + mayonnaiseStatus;
+        String mayoStatus = mayo ? "Yes" : "No";
+        return "Burger Ingredients:\n" +
+                "Bun: " + bun + "\n" +
+                "Meat: " + meat + "\n" +
+                "Cheese: " + cheese + "\n" +
+                "Veggies: " + veggies + "\n" +
+                "Mayo: " + mayoStatus;
     }
 }
 
